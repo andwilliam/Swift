@@ -1,0 +1,8 @@
+Int(deciaml)
+Double(integer)
+
+//
+let wantDouble = 3
+let actuallyDouble = Double(3)
+let actuallyDouble: Double = 3
+let actuallyDouble = 3 as double

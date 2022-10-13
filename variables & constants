@@ -1,0 +1,24 @@
+/*
+variables & constants
+registers cpu RAM
+decimal(base 10)
+binary(base 2)
+bit
+byte - 8 bits
+nibble - 4 bits
+hexadecimal(base 16) hex a-f
+integer
+shift left: <<
+shift right: >>
+*/
+
+sin(45 * Double.pi / 180)
+cos(135 * Double.pi / 180)
+(2.0).squareRoot()
+
+//constants
+let number: Int = 10
+let pi: Double = 3.14159
+
+//variables
+var variablesNumber: Int = 42
