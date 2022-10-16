@@ -1,0 +1,41 @@
+// && and
+// || or 
+
+// toggle
+var switchState = true
+switchState.toggle() // false
+switchState.toggle() // true
+
+//if
+if 2>1 {
+    print("YES")
+}
+
+//
+let animal = "Fox"
+if animal == "Cat" || animal =="Dog" {
+    print("Animal is a house pet.")
+    else {
+        print("Animal is not a house pet.")
+    }
+}
+
+//
+let hourOfDay = 12
+var timeOfDay = ""
+
+if hourOfDay < 6 {
+    timeOfDay = "Early morning"
+} else if hourOfDay < 12 {
+    timeOfDay = "Morning"
+} else if hourOfDay < 17 {
+    timeOfDay = "Afternoon"
+} else if hourOfDay < 20 {
+    timeOfDay = "Evening"
+} else if hourOfDay < 24 {
+    timeOfDay = "Late evening"
+} else {
+    timeOfDay = "Invalid hour!"
+}
+print(timeOfDay)
+
