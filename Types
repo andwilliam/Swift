@@ -1,8 +1,54 @@
+
+//Int (number)
 Int(deciaml)
 Double(integer)
 
-//
 let wantDouble = 3
 let actuallyDouble = Double(3)
 let actuallyDouble: Double = 3
 let actuallyDouble = 3 as double
+
+//Charcater (sigle character) & String (text)
+ let characterA: Charcater = "a"
+ let characterB: Character = "🐶"
+ let stringDog: String = "Dog"
+
+//2D 3D
+let coordinates: (Int, Int) = (2,3)
+let coordinates = (2,3)
+
+let x1= coordinates.0
+let x2= coordinates.1
+
+let coordinatesNamed = (x: 2, y: 3)
+let x2= coordinatesNamed.x
+let y2= coordinatesNamed.y
+
+let coordinates3D = (x: 2, y: 3, z: 1)
+let (x3, y3, z3)= coordinates3D
+
+let coordinates3D = (x: 2, y: 3, z: 1)
+let x3 = coordinates3D.x
+let y3 = coordinates3D.y
+let z3 = coordinates3D.z
+
+// Int (64 bits)
+/*
+Int8 -- 1 byte
+Int16 -- 2 bytes
+Int32 -- 4 bytes
+Int64 -- 8 bytes
+*/
+
+// Signed Unsigned
+
+//Double -- 8 bytes 
+
+//Float -- 4 bytes
+
+//type alias (new type)
+typealias Animal = String
+let myPet: Animal = "Dog"
+
+typealias coordinates = (Int, Int)
+let xy: coordinates = (3,2)
