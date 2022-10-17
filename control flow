@@ -39,3 +39,21 @@ if hourOfDay < 6 {
 }
 print(timeOfDay)
 
+//
+let hourOfDay = 21
+var timeOfDay = ""
+switch hourOfDay {
+case 0...5 :
+    timeOfDay = "Early morning"
+case 6...11 :
+    timeOfDay = "Morning"
+case 12...16 :
+    timeOfDay = "Afternoon"
+case 17...19 :
+    timeOfDay = "Evening"
+case 20...23 :
+    timeOfDay = "Late evening"
+default :
+    timeOfDay = "INVALID HOUR!"
+}
+print(timeOfDay)
