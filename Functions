@@ -1,0 +1,38 @@
+//
+func printName() {
+    print("My name is .")
+}
+printName()
+
+//parameters
+func printMultipleOfFive(value: Int) {
+    print("\(value) * 5 = \(value * 5)")
+}
+printMultipleOfFive(value: 10)
+
+//multiple parameters
+func printMultiple(multipler: Int, andValue: Int) {
+    print("\(multiple) * \(andValue) = \(multiple * andValue)")
+}
+printMultiple(multiple: 4, andValue: 2)
+
+//
+func printMultipleOf(_ multiplier: Int, _ value: Int) {
+    print("\(multiplier) * \(value) = \(multiplier * value)")
+}
+printMultipleOf(4,2)
+printMultipleOf(4)  //NO VALUE it defaults to 1
+
+//return values
+func multi(_ number: Int, by multiplier: Int) -> Int {
+    return number * multiplier
+}
+let result = multiplier(4, by: 2)
+
+//return multiple values
+func multiplyAndDivide(_ number: Int, by factor: Int) ->(product: Int, quotient: Int) {
+    return (number * factor, number / factor)
+}
+let results = multiplyAndDivide(4, by: 2)
+let product = results.product
+let quotient = results.quotient
