@@ -36,3 +36,58 @@ func multiplyAndDivide(_ number: Int, by factor: Int) ->(product: Int, quotient:
 let results = multiplyAndDivide(4, by: 2)
 let product = results.product
 let quotient = results.quotient
+
+// copy-in copy-out  (inout &)
+func incrementAndPrint(_ value: inout Int) {
+    value += 1
+    print(value)
+}
+var value = 5
+incrementAndPrint(&value)
+print(value)
+
+//overloading
+func incrementAndPrint(multiplier: Int, andValue: Int ) 
+func incrementAndPrint(multiplier: Int, and Value: Int)
+func incrementAndPrint(_ multiplier: Int, and Value: Int)
+func incrementAndPrint(_ multiplier: Int, _ Value: Int)
+
+//
+func getValue() -> Int { 31 }
+func getValue() -> String { "Matt Galloway"}
+
+let valueInt: Int = getValue()
+let ValueString: String = getValue()
+
+//
+func add(_ a: Int, _ b: Int) -> Int {
+    a+b
+}
+var function = add
+function(4,2)
+
+// passed-in function
+func printResult(_ function: (Int, Int) -> Int, _ a: Int, _ b: Int) {
+    let result = function(a,b)
+    print(result)
+}
+printResult(add,4,2)
+
+// no return
+func noReturn() -> Nver {
+
+}
+//
+func infiniteLoop() -> Never {
+    while true {
+
+    }
+}
+
+//
+func calculateAverage(of a: Double, and b: Double, and c: Double) -> Double {
+    let total = a+b+c
+    let average = total/3
+    return average
+}
+calculateAverage(of: 1, and: 3, and: 5)
