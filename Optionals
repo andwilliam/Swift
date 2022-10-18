@@ -1,0 +1,29 @@
+//nil
+//sentinel value (absence of value) (Schroedinger's cat)
+var errorCode: Int?
+
+errorCode = 100
+errorCode = nil
+
+//
+var result: Int? = 30
+print (result as Any)
+
+//
+var authorName: String? = "Matt Galloway"
+var authorAge: Int? = 30
+var unwrappedAuthorName = authorName!
+print("Author is \(unwrappedAuthorName)")
+
+//
+func guardMyCastle(name: String?) {
+    guard let castleName = name else {
+        print("No castle!")
+        return
+    }
+    print("Your castle called \(castleName) was guarded!")
+}
+
+// nil coalescing
+var optionalInt: Int? = 10
+var mustHaveResult = optionalInt ?? 0
