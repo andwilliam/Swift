@@ -1,6 +1,8 @@
 //nil
 //sentinel value (absence of value) (Schroedinger's cat)
-var errorCode: Int?
+//Optionals represent a value and the "absence of that value"
+var errCode: Int?  //an optional Int either Int or Nil
+var errCoder: String? 
 
 errorCode = 100
 errorCode = nil
@@ -9,13 +11,13 @@ errorCode = nil
 var result: Int? = 30
 print (result as Any)
 
-//
+//force unwrapping !
 var authorName: String? = "Matt Galloway"
 var authorAge: Int? = 30
 var unwrappedAuthorName = authorName!
 print("Author is \(unwrappedAuthorName)")
 
-//
+// guard: 
 func guardMyCastle(name: String?) {
     guard let castleName = name else {
         print("No castle!")
@@ -24,6 +26,23 @@ func guardMyCastle(name: String?) {
     print("Your castle called \(castleName) was guarded!")
 }
 
-// nil coalescing
+// nil coalescing operator ??
 var optionalInt: Int? = 10
-var mustHaveResult = optionalInt ?? 0
+var mustHaveResult = optionalInt ?? 0  //mustHaveResult = optinalInt = 0 = nil
+
+//
+var optionalInt: Int? = 10
+var mustHaveResult: Int
+if let unwrapped = optionalInt {
+    mustHaveResult = unwrapped
+} else {
+    mustHaveResult = 0
+}
+//or
+optinalInt = nil
+mustHaveResult = optionalInt ?? 0
+
+
+
+
+
