@@ -60,3 +60,67 @@ print(players)
 //sort elements
 players.sort()
 
+
+//accessing elements O(1)
+
+//Inserting elements and Deleting elements   //  linear time O(n)
+/*
+Begain: add to the begaing of the array, shifting all of the elements over by one to make room
+Middle: doing n/2 operations, called: O(n)
+End: if there isn`t room, swift need to make space and copy entire array,take O(n). else take O(1)
+*/ 
+
+//searching for an element 
+
+// Dictionaries key-value
+//Unordered
+
+var namesAndScores = ["Anna": 2, "Brain": 2, "Craig": 8, "Donna": 6]  //[String: Int]
+var pairs: [String: Int] = [:]
+
+//define its capacity
+paris.reserveCapacity(20)
+
+//accessing values through key
+var namesAndScores = ["Anna": 2, "Brain": 2, "Craig": 8, "Donna": 6]
+print(namesAndScores["Anna"]!) //2 retrun type is an optional, if doesn`t find the key ,it will return nil
+print(namesAndScores["Greg"]) //nil
+namesAndScores.isEmpty //false
+namesAndScores.count //4
+
+
+//adding value
+var bobData = ["name": "Bob", "profession": "Card Player", "country": "USA"] //[String:String]
+bobData.updateValue("CA", forKey: "State") //["State": "CA"]
+bobData["city"] = "San Francisco"
+
+//removing pairs
+bobData.removeValue(forKey: "state") //keep the key and set the value to nil
+bobData["city"] = nil //removes the key completely
+
+// tuple
+var namesAndScores = ["Anna": 2, "Brain": 2, "Craig": 8, "Donna": 6]
+for (player, score) in namesAndScores {
+    print ("\(player) - \(score)")
+}
+// or
+var namesAndScores = ["Anna": 2, "Brain": 2, "Craig": 8, "Donna": 6]
+for player in namesAndScores.keys {
+    print("\(player) ", terminator: "")
+}
+print("")
+
+//hash value
+
+//sets
+let setOne: Set<Int> = [1]
+let someArray = [1,2,3,1]  // an array
+var explicitSet: Set<Int> = [1,2,3,1]
+var someSet = Set([1,2,3,1])
+ 
+//accessing elements
+print(someSet.contains(1)) //true
+print(someSet.contains(4)) //false
+someSet.insert(5)
+someSet.remove(1)
+
