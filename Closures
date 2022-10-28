@@ -1,0 +1,160 @@
+//a closure is simply a function without a name, the type of a closure  is a function type.
+var multipleClosure: (Int, Int) -> Int
+
+//initial closure, a little bit different with function declaration.
+var multipleClosure = {
+    (a: Int, b: Int) -> Int in 
+    return a*b
+    } 
+let result = multipleClosure(4,2)
+
+
+// operateOnNumers(Int, Int, Int) -> Int
+func operateOnNumbers(_ a: Int, _ b: Int, operation: (Int, Int) -> Int) -> Int
+{
+    let result = operation(a, b)
+    print(result)
+    return result
+}
+let addClosure = {
+    (a: Int, b: Int) in
+    a + b
+}
+operateOnNumbers(4, 2, operation: addClosure)
+
+//trailing closure syntax
+operateOnNumbers(4,2) {
+    $0 + $1
+}
+//multiple trailing closure syntax
+func sequenced(first: () -> void, second: () -> void) {
+    first()
+    second()
+}
+sequenced {
+    print("Hello, ", terminator:"")
+} second: {
+    print("world.")
+}
+
+//
+let names = ["ZZZZZZ", "BB", "A", "CCCC", "EEEEE"]
+names.sorted()
+names.sorted {
+    $0.count > $1.count
+}
+
+//
+let values = [1,2,3,4,5,6]
+values.forEach {
+    print("\($0): \($0*$0)")
+}
+
+//
+var prices = [1.5, 10, 4.99, 2.30, 8.19]
+let largePrices = prices.filter {
+    $0 > 5
+}
+
+// map 
+//trun them into an array
+//[1.35, 9, 4.491000000000001, 2.07, 7.371]
+var prices = [1.5, 10, 4.99, 2.30, 8.19]
+let salePrices = prices.map {
+    $0 * 0.9
+}
+
+
+//compactMap 
+//create an array of Int and tosses out the missing values
+//[0, 11, nil, 42]
+let userInput = ["0", "11", "haha", "42"]
+let numbers2 = userInput.map {
+    Int($0)
+}
+
+//flateMap
+// take them together
+//["0", "1", "a", "b", "c", "🐎"]
+let userInputNested = [["0", "1"], ["a", "b", "c"], ["🐎"]]
+let allUserInput = userInputNested.flatMap {
+    $0
+}
+
+//reduce
+//
+//15
+var prices = [1, 2, 3, 4, 5]
+let sum = prices.reduce(0) {
+    $0 + $1
+}
+//dropFirst
+//dropLast
+//removeAll
+
+
+//functions and closures
+func greet(person: String) -> String {
+    let greeting = "Hello " + person + "!"
+    return greeting
+}
+print(greet(person: "Anna"))  //placing the value in the function
+print(greet(person: "Brian")) //placing the value in the function
+
+//无参数函数
+func sayHelloWorld() -> String {
+    return "hello, world!"
+}
+print(sayHelloWorld())
+//多参数函数
+func greetAgain(person: String) -> String {
+    return "Hello again, " + person + "!"
+}
+print(greetAgain(person: "Anna"))
+
+func greet(person: String, alreadyGreated: Bool) -> String {
+    if alreadyGreated {
+        return greetAgain(person: person)
+    } else
+    {
+        return greet(person: person)
+    }
+}
+print(greet(person: "Tim", alreadyGreeted: true))
+//无返回值函数
+func greet(person: String) {   //没有返回箭头（->）和返回类型,函数会返回一个 Void 类型特殊值，该值为一个空元组，写成 ()
+    print("Hello, \(person)!")
+}
+greet(person: "Dave") 
+//多返回值函数
+func minMax(array: [Int]) -> (min: Int, max: Int) {
+    ...
+    return (currentMin, currentMax)
+}
+
+//可选元组返回类型 (Int, Int)?  (Int?, Int?) 
+func minMax(array: [Int]) -> (min: Int, max: Int)?  {
+    ...
+    return (currentMin, currentMax)
+}
+//nil
+
+//隐式返回的函数 省略return
+
+//函数参数标签 忽略参数标签，可以用下划线（_）来代替
+//默认参数值
+//可变参数 在变量类型名后面加入（...）的方式来定义可变参数。
+func arithmeticMean(_ numbers: Double...) -> Double {
+    ...
+}
+
+//可以修改参数的值: 输入输出参数（In-Out Parameters）
+//加 inout 关键字
+func swapTwoInts(_ a: inout Int, _ b: inout Int) {
+    ...
+}
+var someInt = 3
+var anotherInt = 107
+swapTwoInts(&someInt, &anotherInt)
+//函数有两个分别叫做 a 和 b 的输入输出参数
+//参数定义在函数体外,都加了 & 的前缀
