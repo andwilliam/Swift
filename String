@@ -1,0 +1,9 @@
+let string = "Matt"
+for char in string {
+    print(char)
+}
+
+let stringLength = string.count
+let fourthChar = string[3]
+
+//grapheme cluster : defined by the unicode (combining characters)

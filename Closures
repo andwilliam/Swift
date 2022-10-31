@@ -158,3 +158,19 @@ var anotherInt = 107
 swapTwoInts(&someInt, &anotherInt)
 //函数有两个分别叫做 a 和 b 的输入输出参数
 //参数定义在函数体外,都加了 & 的前缀
+
+//
+func stepForward(_ input: Int) -> Int {
+    return input + 1
+}
+
+func stepBackward(_ input: Int) -> Int {
+    return input - 1
+}
+
+func chooseStepFunction(backward: Bool) -> (Int) -> Int {
+    return backward ? stepBackward : stepForward
+} ////返回类型是 (Int) -> Int 类型的函数
+
+var currentValue = 3
+let moveNearerToZero = chooseStepFunction(backward: currentValue > 0)
