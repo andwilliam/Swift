@@ -18,3 +18,22 @@ func isInDiliveryRange(location: (x: Int, y: Int)) -> Bool {
 }
 
 isInDiliveryRange(location: (x: 8, y: 9))
+
+//
+struct Location {
+    let x: Int
+    let y: Int
+}
+
+let storeLocation = Location(x: 3, y: 3)
+
+struct DeliveryArea {
+    let center: Location
+    var radius: Double
+}
+var storeArea = DeliveryArea(center: storeLocation, radius: 2.5)
+
+//protocol
+struct Int: FixedWidthInteger, SignedInteger { }
+//
+
