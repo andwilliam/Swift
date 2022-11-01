@@ -1,0 +1,26 @@
+//stored properties
+struct Contact {
+    var fullName: String
+    var emailAddress: String
+}
+var person = Contact(fullName: "w.gong", emailAddress: "ggorvi@gmail.com")
+person.fullName // w.gong
+person.emailAddress // ggorvi@gmail.com
+
+//using let to prevent a value from changing
+struct Contact {
+    var fullName: String
+    let emailAddress: String
+}
+
+//computed properties
+//suqareRoot()
+//rounded()
+struct TV {
+    var height: Double
+    var width: Double
+    var diagonal: Int {
+        let result= (height * height + width * width).squareRoot().rounded()
+        return Int(result)
+    }
+}
