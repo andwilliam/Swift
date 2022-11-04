@@ -37,3 +37,41 @@ var storeArea = DeliveryArea(center: storeLocation, radius: 2.5)
 struct Int: FixedWidthInteger, SignedInteger { }
 //
 
+
+//结构体
+//类 :继承, 类型转换, 析构器, 引用计数
+//作为一般准则，优先使用结构体，因为它们更容易理解，仅在适当或必要时才使用类
+
+struct SomeStructure {
+    // 在这里定义结构体
+}
+class SomeClass {
+    // 在这里定义类
+}
+
+//结构体, 类 用UpperCamelCase（大写命名风格） 这种方式来命名类型（SomeClass 和 SomeStructure）
+//属性，方法 用lowerCamelCase，（如 frameRate 和 incrementCount）
+
+//像素结构体
+struct Resolution {
+    var width = 0
+    var height = 0
+}
+
+//视频模式
+class VideoMode {
+    var resolution = Resolution()
+    var interlaced = false
+    var frameRate = 0.0
+    var name: String?
+}
+
+//简单的构造器语法
+let someResolution = Resolution()  //特定的像素
+let someVideoMode = VideoMode()  //特定的的视频模式
+
+//逐一构造器
+let vga = Resolution(width: 640, height: 480)
+
+//类是引用类型（特）
+//与值类型不同，引用类型在被赋予到一个变量、常量或者被传递到一个函数时，其值不会被拷贝。因此，使用的是已存在实例的引用，而不是其拷贝。
