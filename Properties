@@ -112,3 +112,5 @@ print(rectangle.height)//10
 rectangle.height = 24
 print(rectangle.height)//12
 
+//全局变量 局部变量
+//类型属性
