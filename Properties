@@ -70,4 +70,45 @@ manager.data.append("Some data")
 manager.data.append("Some more data")
 
 //属性观察器： 监控，响应属性值的变化
+//willSet 之前调用
+//didSet  之后调用
+
+class StepCounter {
+    var totalSteps: Int = 0 {
+        willSet(newTotalSteps) {
+            print("将totalSteps的值设置为\(newTotalSteps)")
+        }
+        didSet {
+            if totalSteps > oldValue {
+                print("增加了\(totalSteps - oldValue)")
+            }
+        }
+    }
+}
+let StepCounter = StepCounter()
+StepCounter.totalSteps = 200
+StepCounter.totalSteps = 360
+StepCounter.totalSteps = 896
+
+//属性包装器
+//线程安全检查，数据库存储
+//wrappedValue 属性的结构体，类，枚举
+@propertyWrapper
+struct TwelveOrLess {
+    private var number = 0    //仅在TwelveOrLess结构体内使用
+    var wrappedValue: Int {
+        get { return number() }
+        set { number = min(newValue, 12) }
+    }
+}
+struct SmallRectangle {
+    @TwelveOrLess var height: Int
+    @TwelveOrLess var width: Int
+}
+var rectangle = SmallRectangle()
+print(rectangle.height)
+rectangle.height = 10
+print(rectangle.height)//10
+rectangle.height = 24
+print(rectangle.height)//12
 
