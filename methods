@@ -1,4 +1,7 @@
-//
+//instance methods提供访问和修改instance properties
+//Counter类的方法是：对动作发生次数计数
+//Counter类定义了三个instances： increment()，increment(by amount: Int)， reset()
+//Counter类声明了可变属性count，用来计数
 class Counter {
     var count = 0
     func increment() {
@@ -40,7 +43,7 @@ if somePoint.isToTheRightOf(x: 1.0) {
 //可变方法 moveBy（x：y :) 
 
 struct Point {
-    var x = 0.0, y = 0.0
+    var x = 0.0, y = 0.0  //允许修改属性必须声明var
     mutating func moveBy(x deltaX: Double, y deltaY: Double) {
         x += deltaX
         y += deltaY
