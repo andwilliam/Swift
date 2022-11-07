@@ -14,6 +14,34 @@ struct Contact {
 }
 
 //computed properties
+//计算属性并不存储实际的值，而是提供一个getter和一个可选的setter来间接获取和设置其它属性
+//计算属性一般只提供getter方法
+//如果只提供getter，而不提供setter，则该计算属性为只读属性，并且可以省略get{}
+//
+class Student {
+    // 存储属性
+    var age : Int = 0
+    var name : String?
+
+    var chineseScore : Double = 100.0
+    var mathScore : Double = 100.0
+
+    // 计算属性
+    var averageScore : Double {
+        get {
+            return (chineseScore + mathScore) / 2
+        }
+
+        // 死循环，在内部又会调用set方法
+        // newValue是系统分配的变量名,内部存储着新值
+        set {
+            self.averageScore = newValue
+        }
+    }
+}
+
+
+//
 struct Point {
     var x = 0.0, y = 0.0
 }//(x,y)
@@ -35,7 +63,7 @@ struct Rect {
         }
     }
 }//origin(x0,y0) size(width, height) center(x1,y1)
-var square = Rect(origin, size)
+var square = Rect(origin: Point(x: 0.0, y: 0.0), size: Size(width: 10.0, height: 10.0))
 let initialSquareCenter = square.center
 square.center = Point(x: 15.0, y: 15.0)
 print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
@@ -53,6 +81,28 @@ struct TV {
 var tv= TV(height: 53.93, width: 95.87)
 tv.diagonal
 
+//类属性
+//类属性是与类相关联的，而不是与类的实例相关联
+//所有的类和实例都共有一份类属性.因此在某一处修改之后,该类属性就会被修改
+//类属性的设置和修改,需要通过类来完成
+//类属性可以使用static来修饰
+class Student  {
+    // 存储属性
+    var age : Int = 0
+    var name : String?
+
+    var chineseScore : Double = 0.0
+    var mathScore : Double = 0.0
+    // 计算属性
+    var averageScore : Double {
+       return (chineseScore + mathScore) / 2
+    }
+    //类属性
+    static var englishScore: Double = 95.5
+    Student.englishScore = 90.5
+    print(Student.englishScore)//90.5
+
+//lazy 懒加载属性
 //结构体属于"值类型",当值类型的实例被声明为let的时候，它的所有属性也就成了let。
 //延时加载存储属性,必须将延时加载属性声明成变量（使用 var 关键字）
 lazy var importer = DataImporter() //延迟加载数据
@@ -113,4 +163,6 @@ rectangle.height = 24
 print(rectangle.height)//12
 
 //全局变量 局部变量
-//类型属性
+
+
+

@@ -25,6 +25,7 @@ func increment() {
 */
 
 //self 属性
+//每一个类的实例都隐含一个叫做 self的属性，可以使用 self访问当前类中的属性和方法
 
 struct Point {
     var x = 0.0, y = 0.0

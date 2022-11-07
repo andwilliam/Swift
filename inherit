@@ -1,0 +1,41 @@
+//定义一个父类
+class Vehicle {
+    var currentSpeed = 0.0
+    func makeNoise() {
+        print("Ba Ba")
+    }
+}
+//定一个子类
+class Bicycle: Vehicle {
+    var hasBasket = false
+}
+
+class Car: Vehicle {
+    var banner = "CA110"
+}
+
+var vehicle = Vehicle()
+vehicle.makeNoise()
+let bicycle = Bicycle()
+var car = Car()
+car.makeNoise()  
+
+//重写 override
+class Car: Vehicle {
+    var banner = "CA110"
+    override func makeNoise() {
+        print("Di Di")
+    }
+}
+var car = Car()
+car.makeNoise()
+//防止被重写 final
+class Vehicle {
+    final var currentSpeed = 0.0
+    final func makeNoise() {
+        print("Ba Ba")
+    }
+    final func run() {
+        print("Run Run")
+    }
+}
