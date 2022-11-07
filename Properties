@@ -14,6 +14,32 @@ struct Contact {
 }
 
 //computed properties
+struct Point {
+    var x = 0.0, y = 0.0
+}//(x,y)
+struct Size {
+    var width = 0.0, height = 0.0
+}//(width, height)
+struct Rect {
+    var origin = Point()
+    var size = Size()
+    var center: Point {
+        get {
+            let centerX = origin.x + (size.width/2)
+            let centerY = origin.y + (size.height/2)
+            return Point(x: centerX, y: centerY)
+        }
+        set(newCenter) {
+            origin.x = newCenter.x - (size.width/2)
+            origin.y = newCenter.y - (size.height/2)
+        }
+    }
+}//origin(x0,y0) size(width, height) center(x1,y1)
+var square = Rect(origin, size)
+let initialSquareCenter = square.center
+square.center = Point(x: 15.0, y: 15.0)
+print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
+
 //suqareRoot()
 //rounded()
 struct TV {
@@ -27,6 +53,21 @@ struct TV {
 var tv= TV(height: 53.93, width: 95.87)
 tv.diagonal
 
-//结构体属于"值类型",当值类型的实例被声明为常量的时候，它的所有属性也就成了常量。
+//结构体属于"值类型",当值类型的实例被声明为let的时候，它的所有属性也就成了let。
 //延时加载存储属性,必须将延时加载属性声明成变量（使用 var 关键字）
 lazy var importer = DataImporter() //延迟加载数据
+
+
+class DataImporter {
+    var fileName = "Data.txt"
+}
+class DataManager {
+    lazy var importer = DataImporter()
+    var data: [String] = []
+}
+let manager = DataManager()
+manager.data.append("Some data")
+manager.data.append("Some more data")
+
+//属性观察器： 监控，响应属性值的变化
+
