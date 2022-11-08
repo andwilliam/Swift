@@ -92,7 +92,69 @@ func calculateAverage(of a: Double, and b: Double, and c: Double) -> Double {
 }
 calculateAverage(of: 1, and: 3, and: 5)
 
-//构造函数，如构造器，构造方法，初始化，初始函数等 (构造函数用于初始化一个类的实例（创建对象）)
+//构造函数
+//构造器 init() { } 
+//构造默认值，可以为存储型属性设置初始值，也可以默认
+struct Fahrenheit {
+    var temperature = 32.0
+}
+
+//自定义构造过程
+//fromFahrenheit，fromKelvin 实参标签
+//fahrenheit， kelvin 形参名
+struct Celsius {
+    var temperatureInCelsius: Double
+    init(fromFahrenheit fahrenheit: Double) {
+        temperatureInCelsius = (fahrenheit - 32.0) / 1.8
+    }
+    init(fromKelvin kelvin: Double) {
+        temperatureInCelsius = kelvin - 273.15
+    }
+}
+
+let boilingPointOfWater = Celsius(fromFahrenheit: 212.0)
+// boilingPointOfWater.temperatureInCelsius 是 100.0
+let freezingPointOfWater = Celsius(fromKelvin: 273.15)
+// freezingPointOfWater.temperatureInCelsius 是 0.0
+
+//构造器 颜色构造器 2种构造器
+//构造器必须使用实参标签
+
+struct Color {
+    let red, green, blue: Double
+    init(red: Double, green: Double, blue: Double) {
+        self.red = red
+        self.green = green
+        self.blue = blue
+    }
+    init(white: Double) {
+        red = white
+        green = white
+        blue = white
+    }
+}
+let magenta = Color(red: 1.0, green: 0.0, blue: 1.0)
+let halfGray = Color(white: 0.5)
+
+//某个构造器不带实惨标签 用下划线代替标签
+struct Celsius {
+    var temperatureInCelsius: Double
+    init(fromFahrenheit fahrenheit: Double) {
+        temperatureInCelsius = (fahrenheit - 32.0) / 1.8
+    }
+    init(fromKelvin kelvin: Double) {
+        temperatureInCelsius = kelvin - 273.15
+    }
+    init(_ celsius: Double){
+        temperatureInCelsius = celsius
+    }
+}
+
+let bodyTemperature = Celsius(37.0)
+// bodyTemperature.temperatureInCelsius 为 37.0
+
+
+构造方法，初始化，初始函数等 (构造函数用于初始化一个类的实例（创建对象）)
 //析构函数，如反构造器，析构方法，反初始化，反初始函数等
 
 class Person {
@@ -123,7 +185,106 @@ p2.age
 p2.sex
 
 //结构体 构造函数
+//Size 结构体自动接收一个 init(width:heght:) 构造函数
 struct Size {
     var width = 0.0, height = 0.0  
 }
 let twoByTwo = Size(width: 2.0, height: 2.0)
+
+//构造函数委托
+struct Size {
+    var width = 0.0, height = 0.0\
+    init() {    
+        //构造函数委托
+        self.init(width: 2.0, height: 2.0)
+    }
+    init(width:Double, height:Double) {
+        self.width = width
+        self.height = height
+    }
+}
+//全写所有的构造函数
+var size = Size()
+size.width
+size.height
+var size2 = Size(width: 1.2, height: 1.2)
+size2.width
+size2.height
+
+//指定构造函数(Designated Initializer)和便捷构造函数(Convenience Initializer)
+init(parameters) {statements}
+convenience init(parameters) {statements}
+
+class Person {
+    var name: String!
+    var weight: Double
+    // 普通自定义构造函数
+    init(name: String) {
+        self.name = name
+        self.weight = 0.0
+    }
+    // 定义指定构造函数
+    init(name: String, weight: Double) {
+        self.name = name
+        self.weight = weight
+    }
+    
+    // 定义便利构造函数
+    convenience init(n name: String, w weight: Double) {
+            // 便利构造函数必须调用同类中的指定构造函数
+        self.init(name: name, weight: weight)
+    }
+    
+    convenience init(showStr: String) {
+        self.init(name: "", weight: 0.0)
+        print(showStr)
+    }
+}
+
+class Man: Person {
+    var sex: String = "boy"
+    override init(name: String) {
+        super.init(name: name)
+        self.name = name
+        self.weight = 0.0
+    }
+    override init(name: String, weight: Double) {
+        self.sex = "女"
+        // 子类的指定构造函数中必须调用父类的构造函数
+        // 重写的时候，必须将调用父类的构造函数语句放在调用父类属性的前面
+        super.init(name: name, weight: weight)
+        self.name = name
+        self.weight = weight
+    }
+    // 定义构造函数与父类的便利构造函数一样, 这里不算重写
+    convenience init(showStr: String) {
+        self.init(name: "", weight: 0.0)
+        print(showStr)
+    }
+}
+var manA = Man(name: "ZhangSan", weight: 62.0)
+var manB = Man(showStr: "Hello Swift")
+
+
+//析构函数
+
+//后面连()都没有
+deinit {
+    // 执行析构过程
+}
+
+//
+class Person {
+    var name: String
+    var age: Int
+    init(name: String, age: Int) {
+        print("Persion - init")
+        self.name = name
+        self.age = age
+    }
+    deinit {
+        print("Person - deinit")
+    }
+}
+var person: Person? = Person(name: "Andwill", age: 33)
+person = nil
