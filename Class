@@ -1,0 +1,12 @@
+//instance of a structure is an immutable value
+//instance of a class is a mutable object, doesn't store an actual instance, it stores a reference to location in memory
+
+//class struct 的 reference type
+//the heap and the stack
+//stacks pass-by-value: struct enum tuple (copy)
+
+//heaps pass-by-reference class cloures (point)
+
+
+
+ 
