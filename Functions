@@ -52,10 +52,9 @@ func incrementAndPrint(multiplier: Int, and Value: Int)
 func incrementAndPrint(_ multiplier: Int, and Value: Int)
 func incrementAndPrint(_ multiplier: Int, _ Value: Int)
 
-//
+//重载：需要哪种类型的值，事先要申明好类型
 func getValue() -> Int { 31 }
 func getValue() -> String { "Matt Galloway"}
-
 let valueInt: Int = getValue()
 let ValueString: String = getValue()
 
