@@ -14,6 +14,9 @@ struct Contact {
 }
 
 //computed properties
+//read-only computed properties
+//getter (read-write computed properties)
+//setter  设置stored properties
 //计算属性并不存储实际的值，而是提供一个getter和一个可选的setter来间接获取和设置其它属性
 //计算属性一般只提供getter方法
 //如果只提供getter，而不提供setter，则该计算属性为只读属性，并且可以省略get{}

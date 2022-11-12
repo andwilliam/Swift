@@ -1,0 +1,44 @@
+protocol Vehicle {
+    func accelerate() //methods, members of protocol, doesn't have any implementation.
+    func stop()
+}
+
+//methods
+
+protocol Unicycle Vehicle {
+    var pedding = false
+    func accelerate() {
+        pedding = true
+    }
+    func stop() {
+        pedding = true
+    }
+}
+
+//properties
+protocol VehicleProperties {
+    var weight: Int { get }
+    var name: Int { get set }
+}
+
+//initializers
+protocol Account {
+    var value: Double { get set }
+    init(initialAccount: Double)
+    init?(transferAccount: Account)
+}
+
+//
+class BitcoinAccount: Account {
+    var value: Double
+    required init(initialAccount: Double) {
+        value = initialAmount
+    }
+    required init?(transferAccount: Account) {
+        guard transferAccount.value
+    }
+}
+
+var accountType: Account.Type  =BitcoinAccount.self
+let account = accountType.init(initialAmount: 30.00)
+let transferAccount = accountType.init(transferAccount: account)!
