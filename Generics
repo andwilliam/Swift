@@ -1,3 +1,5 @@
+//Generics: using one set of type to define a new set of types
+
 enum PetKind {
     case cat
     case dog
@@ -9,3 +11,21 @@ struct KeeperKind {
 
 let catKeeper = KeeperKind(keeperOf: .cat)
 let dogKeeper = KeeperKind(keeperof: .dog)
+
+//
+class Keeper<animal> { } . //  <animal>: 占位符类型名
+var aCatKeeper = Keeper<Cat>() //specializations
+
+//
+class Keeper<animal> {
+    var name: String
+    var morningCare: Animal
+    var afternoonCare: Animal
+
+    init(name: String, morningCare: Animal, afternoonCare: Animal) {
+        self.name = name
+        self.morningCare = morningCare
+        self.afternoonCare = afternoonCare
+    }
+} 
+let jason = Keeper(name: "Jason", morningCare: Cat(name: "Whiskers", afternoonCare: Cat(name: "Sleepy")))
