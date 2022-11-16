@@ -7,6 +7,43 @@
 
 //heaps pass-by-reference class cloures (point)
 
+/*
+参数: 函数的输入,有名字和类型的值
+返回类型: 函数的输出，某种类型的值，函数执行结束
+实参: 传入函数的值
+函数的实参必须与函数参数表里参数的顺序一致
+参数标签argument label ： 调用函数的时候使用，需要将函数的参数标签写在对应的参数前面
+参数名称parameter name ： 函数的实现中使用
+默认参数值 ： 参数可以设置默认值，调用这个函数时可以忽略这个参数。
+可变参数variadic parameter： 通过在变量类型名后面加入（...）的方式来定义可变参数。
+输入输出参数In-Out Parameters ： 参数定义前加 inout 关键字，当传入的参数作为输入输出参数时，需要在参数名前加 & 符，表示这个值可以被函数修改。
+
+*/
+
+//可变参数
+func mathCount(numbers: Int...) -> Int {
+    var total: Int = 0
+    for number in numbers {
+        total += number
+    }
+    return total
+}
+mathCount(numbers: 1,2,3,4,5)
+
+//输入输出参数
+func swapTwoInts(_ a: inout Int, _ b: inout Int) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+
+var someInt = 3
+var anotherInt = 107
+swapTwoInts(&someInt, &anotherInt)
+print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
+
+
+
 
 
  
