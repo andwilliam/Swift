@@ -1,3 +1,29 @@
+//闭包的形式
+{(parameters) -> return type in
+    statements
+}
+//举例
+func test1(a: String, b: String) -> String {
+    return a + b
+}
+test1(a: "will", b: "gong")
+
+//调用闭包时，不要用外部参数名称a,b
+let test2 = {(a: String, b: String) -> String in
+    a + b
+}
+print(test2("will ","gong"))
+
+//
+let names = ["Chris", "Alex", "Ewa", "Barry", "Daniella"]
+var reversedNames = names.sorted(by: {(s1: String, s2: String) -> Bool in return s1 < s2
+})
+print(reversedNames)
+//参数缩写$0 $1 $2
+reversedNames = names.sorted(by: { $0 > $1 } )
+
+
+
 //a closure is simply a function without a name, the type of a closure  is a function type.
 var multipleClosure: (Int, Int) -> Int
 
