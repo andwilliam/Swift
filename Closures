@@ -1,4 +1,4 @@
-//闭包的形式
+//闭包的形式 {(parameters) -> type in statements}
 {(parameters) -> return type in
     statements
 }
@@ -200,3 +200,59 @@ func chooseStepFunction(backward: Bool) -> (Int) -> Int {
 
 var currentValue = 3
 let moveNearerToZero = chooseStepFunction(backward: currentValue > 0)
+
+
+//
+{(a: String, b: String) -> String in
+    return a + b
+}
+
+//最简单的闭包
+let test = { 10 }
+print(test())
+
+//闭包里是参数
+let test = { print($0, $1, $2) }
+print(test(10, 20, 30))
+
+//尾随闭包， 最后一个参数是闭包，可以简化尾随
+func calculate(a: Int, b: Int, c: (Int, Int) -> Int) -> Int {
+    return c(a,b)
+}
+let (a, b) = (1, 2)
+let r1 = calculate(a: a, b: b, c: { (x, y) -> Int in x + y })
+let r2 = calculate(a: a, b: b, c: { (x, y) -> Int in x * y })
+print(r1, r2)
+
+//索引写法
+func calculate(a: Int, b: Int, c: (Int, Int) -> Int) -> Int {
+    return c(a,b)
+}
+let (a, b) = (1, 2)
+let r1 = calculate(a: a, b: b, c: {$0 + $1})
+let r2 = calculate(a: a, b: b, c: {$0 * $1})
+print(r1, r2)
+//尾随写法
+func calculate(a: Int, b: Int, c: (Int, Int) -> Int) -> Int {
+    return c(a,b)
+}
+let (a, b) = (1, 2)
+let r1 = calculate(a: a, b: b) {$0 + $1} //尾随
+let r2 = calculate(a: a, b: b) {$0 * $1} //尾随
+print(r1, r2)
+
+
+//排序
+let names = ["AT", "AE", "D", "S", "BE"]
+func compare(a: String, b: String) -> Bool {
+    return a < b
+}
+print(names.sorted(by: compare))
+print(names.sorted(by: {$0 < $1}))
+print(names.sorted(){$0 < $1})  //尾随闭包写法
+print(names.sorted {$0 < $1}) //括号省略掉
+
+//捕获变量
+//自动闭包
+//逃逸闭包，非逃逸闭包
+
