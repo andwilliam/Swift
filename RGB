@@ -1,0 +1,16 @@
+/*
+@main attribute means the entry point, start with ContentView
+struct RGBullsEyeApp: App {} 
+struct ContentView: View {} contain: a text, padding modifier
+struct ContentView_Previews: PreviewProvider {} 
+
+
+
+
+
+*/
+//ContentView
+//Canvas and Minimap
+//Modifiers method for foreground color, font, padding...
+//HStack, VStack, ZStack, Group
+//
