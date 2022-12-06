@@ -2,3 +2,49 @@ let names = ["Anna", "Alex", "Brian", "Jack"]
 for name in names {
     print("Hello, \(name)!")
 }
+
+//3^10
+//下划线替代循环中的变量
+let base = 3
+let power = 10
+var answer = 1
+for _ in 1...power {
+    answer *= base
+}
+
+// 半开区间运算符（...<）
+let minutes = 60
+for tickMark in 0...<minutes {} //0到59
+
+//Switch
+let someCharacter: Character = "z"
+switch someCharacter {
+    case "a" :
+    print("The first letter")
+    case "b" :
+    print("The second letter")
+    case "c" :
+    print("The third letter")
+default:
+    print("The last letter")
+}
+
+//使用区间匹配
+let approximateCount = 62
+let countedThings = "moons orbiting Saturn"
+let naturalCount: String
+switch approximateCount {
+    case 0:
+    naturalCount = "no"
+    case 1..<5:
+    naturalCount = "a few"
+    case 5..<12:
+    naturalCount = "several"
+    case 12..<100:
+    naturalCount = "dozens of"
+    case 100..<1000:
+    naturalCount = "hundreds of"
+    default:
+    naturalCount = "many"
+}
+print("there are \(naturalCount) \(countedThings).")
