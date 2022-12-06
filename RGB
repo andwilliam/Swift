@@ -3,7 +3,11 @@
 struct RGBullsEyeApp: App {} 
 struct ContentView: View {} contain: a text, padding modifier
 struct ContentView_Previews: PreviewProvider {} 
-
+.intString()
+.accentColor()
+$guess.red
+.scoreRound
+.startNewRound()
 
 
 
